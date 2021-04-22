@@ -24,6 +24,7 @@ const Profile = ({ match }) => {
             <Link to={'/'}><div style={{fontSize: 18}}>Go home</div></Link>
             <h2>{user.login}</h2>
             <img src={user.avatar_url} alt={user.login} style={{width: 300}}/>
+            <h6>Public repositories: {user.public_repos}</h6>
             <div>
                 <a href={user.html_url} className="btn btn-primary">Watch profile</a>
             </div>
