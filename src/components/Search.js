@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { clearUsers, searchUsers } from "../redux/actions/github";
 import { useDispatch } from "react-redux";
+import { AlertContext } from "../context/alert/alertContext";
 
 const Search = () => {
     const dispatch = useDispatch()
+    const alert = useContext(AlertContext)
     const [input, inputChange] = useState( '')
 
     const inputChangeHandler = event => {
@@ -14,9 +16,11 @@ const Search = () => {
     const submitHandler = (event) => {
         event.preventDefault()
         if(input === '') {
+            alert.show('Введите данные пользователя')
             dispatch(clearUsers())
             return
         }
+        alert.hide()
         dispatch(searchUsers(input))
     }
 
